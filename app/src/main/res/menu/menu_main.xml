@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="edu.ucdenver.salimlakhani.phonebook2.MainActivity">
+    <item
+        android:id="@+id/action_add"
+        android:title="Add"
+        android:icon="@drawable/baseline_add_circle_24"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_name"
+        android:title="Name"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_phone"
+        android:title="Phone"
+        app:showAsAction="never" />
+
+</menu>
