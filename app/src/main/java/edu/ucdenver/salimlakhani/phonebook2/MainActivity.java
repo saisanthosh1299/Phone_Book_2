@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Contact> list;
     private ContactAdapter contactAdapter;
     private String type;
+    private String ty;
 
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        list = new ArrayList<Contact>();
+        list = new ArrayList<>();
         contactAdapter = new ContactAdapter(this, list);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -66,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         type = prefs.getString("type", "name");
         contactAdapter.setType(type);
-
-
     }
 
     @Override
@@ -115,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addContact (Contact contact) {
         list.add (contact);
-        Log.i ("info", "Contact Name:" + contact.getName());
+        Log.i("info", "Contact Name: " + contact.getName() + ", Phone Number: " + contact.getPhone());
         contactAdapter.notifyDataSetChanged();
     }
 }
