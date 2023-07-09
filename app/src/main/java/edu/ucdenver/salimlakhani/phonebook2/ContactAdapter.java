@@ -1,6 +1,7 @@
 package edu.ucdenver.salimlakhani.phonebook2;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +18,14 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ListItem
 
     private String type;
 
-    public ContactAdapter (MainActivity mainActivity, ArrayList<Contact> list) {
+    public ContactAdapter(MainActivity mainActivity, ArrayList<Contact> list) {
         this.mainActivity = mainActivity;
         this.list = list;
         type = "name";
 
     }
 
-    public void setType (String type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -33,7 +34,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ListItem
     @Override
     public ContactAdapter.ListItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View listItem = LayoutInflater.from (parent.getContext())
+        View listItem = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_layout, parent, false);
         return new ListItemHolder(listItem);
     }
@@ -56,7 +57,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ListItem
         private TextView textViewName;
         private TextView textViewphone;
 
-        public ListItemHolder (View itemView) {
+        public ListItemHolder(View itemView) {
             super(itemView);
             textViewName = itemView.findViewById(R.id.textViewName);
             textViewphone = itemView.findViewById(R.id.textViewphone);
@@ -68,7 +69,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ListItem
 
         }
 
-        public void onClick (View view) {
+        public void onClick(View view) {
             //Action to perform when user click on this view
             int position = getAdapterPosition();
             Contact contact = list.get(position);
@@ -77,7 +78,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ListItem
             View dialogView = LayoutInflater.from(view.getContext()).inflate(R.layout.dialog_view_contact, null);
 
             // Set contact information in the dialog view
-            TextView textViewName = dialogView.findViewById(R.id.textViewName);
+            /*TextView textViewName = dialogView.findViewById(R.id.textViewName);
             TextView textViewPhone = dialogView.findViewById(R.id.textViewPhone);
             TextView textViewEmail = dialogView.findViewById(R.id.textViewEmail);
             TextView textViewStreet = dialogView.findViewById(R.id.textViewStreet);
@@ -93,20 +94,31 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ListItem
             textViewCity.setText(contact.getCity());
             textViewState.setText(contact.getState());
             textViewZip.setText(contact.getZip());
-            textViewType.setText(contact.getContacttype());
+            textViewType.setText(contact.getContacttype());*/
 
-            // Set the selected radio button based on contact type
-
-
-            // Create and show the dialog
-            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                // Create and show the dialog
+           /* AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
             builder.setView(dialogView);
             builder.setPositiveButton("Close", null); // Add a close button if needed
             AlertDialog dialog = builder.create();
             dialog.show();
-        }
+            dialog.dismiss();*/
+
+            if (position != RecyclerView.NO_POSITION) {
+                    contact = list.get(position);
+                    mainActivity.showContactDialog(contact);
+                  
+            }
+
 
         }
 
+
+        private void onClick(DialogInterface dialog1, int which) {
+// Close button clicked
+            dialog1.dismiss();
+        }
     }
+}
+
 

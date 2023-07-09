@@ -226,6 +226,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_dark"
                 android:text="@string/button_delete"
+                android:onClick="deletecontact"
                 android:textSize="18sp"
                 tools:ignore="TextContrastCheck" />
 
